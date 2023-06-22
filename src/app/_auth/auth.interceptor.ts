@@ -20,7 +20,9 @@ intercept(
             return next.handle(req.clone());
         }
        const token = this.userAuthService.getToken();
+       console.log(token)
        req = this.addToken(req, token);
+       console.log(req)
        return next.handle(req).pipe(
         catchError(
             (err: HttpErrorResponse) => {
